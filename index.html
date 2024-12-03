@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>    
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.otp-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.otp-display {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.generate-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.generate-btn:hover {
+    background-color: #218838;
+}
+
+.generate-btn:active {
+    background-color: #1e7e34;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+</style>
+<body>
+
+    <div class="otp-container">
+        <h2>Generate OTP</h2>
+        <div class="otp-display" id="otp-display">------</div>
+        <button class="generate-btn" onclick="generateOtp()">Generate OTP</button>
+        <div class="error-message" id="error-message"></div>
+    </div>
+
+    <script>
+        function generateOtp() {
+    const digits = '123456789';
+    let otp = '';
+
+    for (let i = 0; i < 4; i++) {
+        const randomIndex = Math.floor(Math.random() * digits.length);
+        otp += digits[randomIndex];
+    }
+
+    // Display OTP on the UI
+    document.getElementById('otp-display').textContent = otp;
+    document.getElementById('error-message').textContent = '';
+}
+    </script>
+
+</body>
+</html>
